@@ -15,7 +15,7 @@ const result = await octokit.request("GET /users/Eleniyancode/repos", {
 
 const data = result.data;
 
-console.log(result);
+// console.log(data);
 
 const aboutResult = await octokit.request("GET /repos/Eleniyancode/about", {
   owner: "Eleniyancode",
@@ -25,34 +25,31 @@ const aboutResult = await octokit.request("GET /repos/Eleniyancode/about", {
   },
 });
 
-const aboutData = data[0];
-// console.log(aboutData)
+const altassData = data[2];
+console.log(altassData)
 
-let aboutDataValue = Object.values(aboutData);
+// let aboutDataValue = Object.values(aboutData);
 // console.log(typeof aboutDataValue);
 
-export default function About() {
+export default function Altass() {
   return (
     <>
       <div className='flex justify-center items-center h-screen flex-col'>
       <table className='shadow-2xl border-5 border-black-500 w-6/12 overflow-hidden'>
         <thead className='text-black'>
-          <tr>
-          <th>ID</th>
+            <th>ID</th>
             <th>Name</th>
             <th>url</th>
             <th>full name</th>
             <th>Date Created</th>
-          </tr>
-            
           </thead>
           <tbody>
             <tr>
-              <td>{aboutData.id}</td>
-              <td>{aboutData.name}</td>
-              <td>{aboutData.url}</td>
-              <td>{aboutData.full_name}</td>
-              <td>{aboutData.created_at}</td>
+              <td>{altassData.id}</td>
+              <td>{altassData.name}</td>
+              <td>{altassData.url}</td>
+              <td>{altassData.full_name}</td>
+              <td>{altassData.created_at}</td>
             </tr>
           </tbody>
         </table>

@@ -15,44 +15,33 @@ const result = await octokit.request("GET /users/Eleniyancode/repos", {
 
 const data = result.data;
 
-console.log(result);
+// console.log(data);
 
-const aboutResult = await octokit.request("GET /repos/Eleniyancode/about", {
-  owner: "Eleniyancode",
-  repo: "about",
-  headers: {
-    "X-GitHub-Api-Version": "2022-11-28",
-  },
-});
 
-const aboutData = data[0];
-// console.log(aboutData)
 
-let aboutDataValue = Object.values(aboutData);
-// console.log(typeof aboutDataValue);
+const listrepoData = data[11];
+console.log(listrepoData)
 
-export default function About() {
+
+export default function Listrepo() {
   return (
     <>
       <div className='flex justify-center items-center h-screen flex-col'>
       <table className='shadow-2xl border-5 border-black-500 w-6/12 overflow-hidden'>
         <thead className='text-black'>
-          <tr>
-          <th>ID</th>
+            <th>ID</th>
             <th>Name</th>
             <th>url</th>
             <th>full name</th>
             <th>Date Created</th>
-          </tr>
-            
           </thead>
           <tbody>
             <tr>
-              <td>{aboutData.id}</td>
-              <td>{aboutData.name}</td>
-              <td>{aboutData.url}</td>
-              <td>{aboutData.full_name}</td>
-              <td>{aboutData.created_at}</td>
+              <td>{listrepoData.id}</td>
+              <td>{listrepoData.name}</td>
+              <td>{listrepoData.url}</td>
+              <td>{listrepoData.full_name}</td>
+              <td>{listrepoData.created_at}</td>
             </tr>
           </tbody>
         </table>

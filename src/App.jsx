@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import './App.css'
 import { Octokit } from 'octokit';
 import { Link } from 'react-router-dom';
 
 const octokit = new Octokit({
-  auth: "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",
+  auth: "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",
 });
 
 const result = await octokit.request("GET /users/Eleniyancode/repos", {
@@ -20,7 +19,7 @@ const result = await octokit.request("GET /users/Eleniyancode/repos", {
   // console.log(data)
 
 function  App() {
-   console.log(data)
+  //  console.log(data)
 
    const [currentPage, setCurrentPage] = useState(1)
    const recordsPerPage = 3;
@@ -49,19 +48,22 @@ function  App() {
 
   return (
     <>
-      <div>
-      <table>
-        <thead>
-          <th>ID</th>
-          <th>Name</th>
-          <th>url</th>
+      <div className='flex justify-center items-center h-screen flex-col'>
+      <table className='shadow-2xl border-5 border-black-500 w-6/12 overflow-hidden'>
+        <thead className='text-black'>
+          <tr>
+          <th className='py-5 px-5 bg-cyan-300'>ID</th>
+          <th className='py-5 px-5 bg-cyan-300'>Name</th>
+          <th className='py-5 px-5 bg-cyan-300'>url</th>
+          </tr>
+          
         </thead>
-        <tbody>
+        <tbody className='text-cyan-900 text-center'>
           {records.map((d, i) => (
-            <tr key={i}>
-              <td>{d.id}</td>
-              <td> <Link to={`/${d.name}`}>{d.name}</Link></td>
-              <td>{d.url}</td>
+            <tr key={i} className='hover:bg-cyan-100 hover:scale-100 bg-cyan-300 cursor-pointer-duration-300'>
+              <td className='px-3 py-3'>{d.id}</td>
+              <td className='px-3 py-3'> <Link to={`/${d.name}`}>{d.name}</Link></td>
+              <td className='px-3 py-3'>{d.url}</td>
             </tr>
             
           ) 
@@ -70,25 +72,29 @@ function  App() {
       </table>
 
       <nav>
-        <ul>
-          <li>
+
+        <div className='flex justify-center'>
+        <ul className='flex justify-center rounded-lg bg-white my-5'>
+          <li className='mx-5'>
             <a href="#" onClick={prePage}>Prev</a>
           </li>
 
           {
           number.map((n, i) => (
-            <li key={i}>
+            <li key={i} className='px-5'>
               <a href="#" onClick={() =>changeCPage (n)} >{n}</a>
 
             </li>
           ))
         }
 
-<li>
+<li className=''>
             <a href="#" onClick={nextPage}>Next</a>
           </li>
         </ul>
-
+  
+        </div>
+        
       
       </nav>
       </div>
